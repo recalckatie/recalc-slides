@@ -383,7 +383,7 @@
 
   .agenda-left p {
     font-size: 15px;
-    color: var(--gray-400);
+    color: var(--gray-600);
     line-height: 1.6;
   }
 
@@ -473,7 +473,7 @@
 
   .slide-players .subtitle {
     font-size: 17px;
-    color: var(--gray-400);
+    color: var(--gray-600);
     margin-bottom: 36px;
     max-width: 700px;
   }
@@ -838,7 +838,7 @@
     font-size: 40px; font-weight: 800; color: var(--navy); margin-bottom: 6px;
   }
   .slide-assistant .subtitle {
-    font-size: 16px; color: var(--gray-400);
+    font-size: 17px; color: var(--gray-600);
     margin-bottom: 36px; max-width: 720px; line-height: 1.5;
   }
 
@@ -951,7 +951,7 @@
   }
 
   .slide-compare .subtitle {
-    font-size: 16px; color: var(--gray-400);
+    font-size: 17px; color: var(--gray-600);
     margin-bottom: 36px;
   }
 
@@ -1111,7 +1111,7 @@
   }
 
   .slide-usecases .subtitle {
-    font-size: 16px; color: var(--gray-400);
+    font-size: 17px; color: var(--gray-600);
     margin-bottom: 28px; max-width: 720px;
   }
 
@@ -1879,7 +1879,7 @@
   <div class="compare-grid">
     <div class="compare-card">
       <div class="compare-card-header">
-        <div class="compare-icon blue">&#10003;</div>
+        <div class="compare-icon blue"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
         <h3>Stays on Task</h3>
       </div>
       <ul class="compare-bullets">
@@ -1890,7 +1890,7 @@
     </div>
     <div class="compare-card">
       <div class="compare-card-header">
-        <div class="compare-icon green">&#128218;</div>
+        <div class="compare-icon green"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 1 1 7.072 0l-.548.547A3.374 3.374 0 0 0 12 18.469a3.374 3.374 0 0 0-.834-1.373l-.548-.547z"/></svg></div>
         <h3>Second Brain</h3>
       </div>
       <ul class="compare-bullets">
@@ -1902,7 +1902,7 @@
     </div>
     <div class="compare-card">
       <div class="compare-card-header">
-        <div class="compare-icon cyan">&#128200;</div>
+        <div class="compare-icon cyan"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
         <h3>Handles Volume</h3>
       </div>
       <ul class="compare-bullets">
@@ -2139,6 +2139,62 @@
 
 
 <!-- ==========================================
+     SLIDE: MANAGING AI RISK
+     ========================================== -->
+<p class="slide-label">Managing AI Risk</p>
+<div class="slide slide-compare">
+  <div class="slide-eyebrow">Before You Connect</div>
+  <h1>Powerful &amp; easy &mdash; but manage the risks</h1>
+  <div class="subtitle">AI can make mistakes or act differently than you would. Bad actors can also trick AI through hidden instructions in content it reads (prompt injection). Here's how to stay in control.</div>
+
+  <div class="compare-grid" style="grid-template-columns: 1fr 1fr; gap: 20px;">
+    <div class="compare-card">
+      <div class="compare-card-header">
+        <div class="compare-icon blue"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h3>Monitor closely</h3>
+      </div>
+      <ul class="compare-bullets">
+        <li>Watch what Claude is doing &mdash; it will explicitly ask for permissions</li>
+        <li>If you see something you don&rsquo;t like, hit &ldquo;stop&rdquo; or escape immediately</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <div class="compare-card-header">
+        <div class="compare-icon green"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg></div>
+        <h3>Start conservative</h3>
+      </div>
+      <ul class="compare-bullets">
+        <li>&ldquo;Put this in drafts&rdquo; rather than sending directly</li>
+        <li>Review outputs before they reach anyone else</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <div class="compare-card-header">
+        <div class="compare-icon cyan"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+        <h3>Sandbox like a real EA</h3>
+      </div>
+      <ul class="compare-bullets">
+        <li>Create a separate email for your AI assistant</li>
+        <li>Limit access to specific folders, its own inbox, and delegate calendar access</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <div class="compare-card-header">
+        <div class="compare-icon blue"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <h3>Signal transparency</h3>
+      </div>
+      <ul class="compare-bullets">
+        <li>Add &ldquo;Sent with Claude&rdquo; to the bottom of AI-sent messages</li>
+        <li>Build trust by being upfront about AI involvement</li>
+      </ul>
+    </div>
+  </div>
+
+  <img class="recalc-logo" src="recalc-logo.png" alt="Recalc">
+</div>
+
+
+<!-- ==========================================
      SLIDE: HR USE CASES — TALENT ACQUISITION & ONBOARDING
      ========================================== -->
 <p class="slide-label">HR Use Cases — Acquisition &amp; Onboarding</p>
@@ -2150,7 +2206,7 @@
   <div class="compare-grid" style="grid-template-columns: 1fr 1fr;">
     <div class="compare-card">
       <div class="compare-card-header">
-        <div class="compare-icon blue">&#128269;</div>
+        <div class="compare-icon blue"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
         <h3>Recruiting &amp; hiring</h3>
       </div>
       <ul class="compare-bullets">
@@ -2163,7 +2219,7 @@
     </div>
     <div class="compare-card">
       <div class="compare-card-header">
-        <div class="compare-icon green">&#128218;</div>
+        <div class="compare-icon green"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
         <h3>Onboarding</h3>
       </div>
       <ul class="compare-bullets">
@@ -2189,7 +2245,7 @@
   <div class="compare-grid">
     <div class="compare-card">
       <div class="compare-card-header">
-        <div class="compare-icon cyan">&#127919;</div>
+        <div class="compare-icon cyan"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg></div>
         <h3>Performance &amp; L&amp;D</h3>
       </div>
       <ul class="compare-bullets">
@@ -2202,7 +2258,7 @@
     </div>
     <div class="compare-card">
       <div class="compare-card-header">
-        <div class="compare-icon blue">&#128202;</div>
+        <div class="compare-icon blue"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg></div>
         <h3>Comp &amp; workforce</h3>
       </div>
       <ul class="compare-bullets">
@@ -2214,7 +2270,7 @@
     </div>
     <div class="compare-card">
       <div class="compare-card-header">
-        <div class="compare-icon green">&#128295;</div>
+        <div class="compare-icon green"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
         <h3>Cross-cutting</h3>
       </div>
       <ul class="compare-bullets">
@@ -2242,7 +2298,7 @@
   <div class="compare-grid">
     <div class="compare-card">
       <div class="compare-card-header">
-        <div class="compare-icon blue">&#9881;</div>
+        <div class="compare-icon blue"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
         <h3>Model selection</h3>
       </div>
       <ul class="compare-bullets">
@@ -2253,7 +2309,7 @@
     </div>
     <div class="compare-card">
       <div class="compare-card-header">
-        <div class="compare-icon green">&#9998;</div>
+        <div class="compare-icon green"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
         <h3>Use AI to write your prompt</h3>
       </div>
       <ul class="compare-bullets">
@@ -2264,7 +2320,7 @@
     </div>
     <div class="compare-card">
       <div class="compare-card-header">
-        <div class="compare-icon cyan">&#128101;</div>
+        <div class="compare-icon cyan"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
         <h3>Manage AI like a junior employee</h3>
       </div>
       <ul class="compare-bullets">
@@ -2339,6 +2395,21 @@
     <span style="font-size: 18px; font-weight: 600; color: var(--navy);">technicallycurious.substack.com</span>
   </div>
 
+  <img class="recalc-logo" src="recalc-logo.png" alt="Recalc">
+</div>
+
+
+<!-- ==========================================
+     SLIDE: GET IN TOUCH
+     ========================================== -->
+<p class="slide-label">Get in Touch</p>
+<div class="slide" style="flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 40px; background: var(--white);">
+  <div class="slide-eyebrow">Get Started</div>
+  <h1 style="font-size: 52px;">Want to learn more?</h1>
+  <div style="display: flex; flex-direction: column; gap: 24px; align-items: center;">
+    <span style="font-size: 22px; color: var(--gray-600);">Let us know: <a href="mailto:support@recalcacademy.com" style="color: var(--gray-600); text-decoration: none; border-bottom: 2px solid var(--accent);">support@recalcacademy.com</a></span>
+    <a href="https://recalcacademy.com" target="_blank" style="font-size: 28px; font-weight: 600; color: var(--navy); text-decoration: none; border-bottom: 3px solid var(--accent);">recalcacademy.com</a>
+  </div>
   <img class="recalc-logo" src="recalc-logo.png" alt="Recalc">
 </div>
 
