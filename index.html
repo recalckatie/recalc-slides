@@ -82,7 +82,7 @@
     position: absolute;
     top: 0; left: 0; right: 0;
     height: 6px;
-    background: linear-gradient(90deg, var(--blue) 0%, var(--cyan) 100%);
+    background: var(--blue);
     z-index: 10;
   }
 
@@ -587,7 +587,7 @@
     width: 4px; height: 100%;
   }
   .cover-panel.panel-1::before {
-    background: linear-gradient(180deg, var(--blue), var(--cyan));
+    background: var(--blue);
   }
   .cover-panel.panel-2::before {
     background: linear-gradient(180deg, var(--navy), var(--blue));
@@ -865,15 +865,15 @@
     top: 0; left: 0; right: 0; height: 3px;
   }
   .workflow-row:first-of-type .workflow-card::before {
-    background: linear-gradient(90deg, var(--blue), var(--cyan));
+    background: var(--blue);
   }
   .workflow-row:last-of-type .workflow-card::before {
-    background: linear-gradient(90deg, var(--blue-light), var(--teal));
+    background: var(--blue);
   }
 
   .wf-icon { font-size: 20px; margin-bottom: 10px; display: block; }
   .wf-title { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
-  .wf-desc { font-size: 12px; color: var(--gray-400); line-height: 1.5; }
+  .wf-desc { font-size: 13px; color: var(--gray-600); line-height: 1.5; }
 
 
   /* ============================================
@@ -959,7 +959,6 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
-    flex: 1;
     align-content: start;
   }
 
@@ -1064,7 +1063,7 @@
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0; height: 3px;
-    background: linear-gradient(90deg, var(--blue), var(--cyan));
+    background: var(--blue);
   }
 
   .pillar-card h3 {
@@ -1112,12 +1111,12 @@
 
   .slide-usecases .subtitle {
     font-size: 17px; color: var(--gray-600);
-    margin-bottom: 28px; max-width: 720px;
+    margin-bottom: 28px; max-width: 1000px;
   }
 
   .usecase-section-label {
-    font-size: 10px; font-weight: 700; letter-spacing: 2.5px;
-    text-transform: uppercase; color: var(--gray-300); margin-bottom: 14px;
+    font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+    text-transform: uppercase; color: var(--gray-600); margin-bottom: 14px;
   }
 
   .usecase-row {
@@ -1139,15 +1138,15 @@
     top: 0; left: 0; right: 0; height: 3px;
   }
   .usecase-row.row-workflow .usecase-card::before {
-    background: linear-gradient(90deg, var(--blue), var(--cyan));
+    background: var(--blue);
   }
   .usecase-row.row-research .usecase-card::before {
-    background: linear-gradient(90deg, var(--blue-light), var(--teal));
+    background: var(--blue);
   }
 
   .uc-icon { font-size: 20px; margin-bottom: 10px; display: block; }
   .uc-title { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
-  .uc-desc { font-size: 12px; color: var(--gray-400); line-height: 1.5; }
+  .uc-desc { font-size: 13px; color: var(--gray-600); line-height: 1.5; }
 
 
   /* ============================================
@@ -1970,7 +1969,7 @@
 <div class="slide slide-usecases">
   <div class="slide-eyebrow">Use Cases</div>
   <h1>The AI Personal Assistant</h1>
-  <div class="subtitle">Knows how you like things done, remembers your work context, and connects to all your tools &mdash; so it can see the full picture and actually get things done</div>
+  <div class="subtitle">Knows how you like things done, remembers your work context, and connects to all your tools</div>
 
   <div class="usecase-section-label">Daily Workflow</div>
   <div class="usecase-row row-workflow">
@@ -2170,7 +2169,7 @@
     </div>
     <div class="compare-card">
       <div class="compare-card-header">
-        <div class="compare-icon cyan"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+        <div class="compare-icon cyan"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
         <h3>Sandbox like a real EA</h3>
       </div>
       <ul class="compare-bullets">
@@ -2292,41 +2291,39 @@
 <p class="slide-label">AI Chat — Key Difference Makers</p>
 <div class="slide slide-compare">
   <div class="slide-eyebrow">AI Chat</div>
-  <h1>Key difference makers</h1>
-  <div class="subtitle">Getting the most out of everyday AI chat</div>
+  <h1>AI Chat: Get Better Results</h1>
+  <div class="subtitle">Three things that make a big difference</div>
 
   <div class="compare-grid">
     <div class="compare-card">
       <div class="compare-card-header">
         <div class="compare-icon blue"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
-        <h3>Model selection</h3>
+        <h3>Use a thinking model</h3>
       </div>
       <ul class="compare-bullets">
-        <li>Reasoning vs. quick-response models serve different purposes</li>
-        <li>Default models auto-select the best fit for your task</li>
-        <li>Selecting a thinking/reasoning model forces deeper analysis</li>
+        <li>Select &ldquo;Thinking&rdquo; mode instead of quick response for most work</li>
+        <li>ChatGPT: GPT-5.2 Thinking (dropdown at upper left)</li>
+        <li>Claude: Opus 4.6</li>
       </ul>
     </div>
     <div class="compare-card">
       <div class="compare-card-header">
         <div class="compare-icon green"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
-        <h3>Use AI to write your prompt</h3>
+        <h3>Ask AI to write your prompt</h3>
       </div>
       <ul class="compare-bullets">
-        <li>For in-depth requests, ask AI to write a prompt for you</li>
-        <li>It will add context, step-by-step instructions, and output criteria</li>
-        <li>Provide example inputs/outputs for additional specificity</li>
+        <li>For complex requests, ask AI to draft the prompt for you first</li>
+        <li>Provide example inputs/outputs for more specificity</li>
       </ul>
     </div>
     <div class="compare-card">
       <div class="compare-card-header">
         <div class="compare-icon cyan"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-        <h3>Manage AI like a junior employee</h3>
+        <h3>Treat it like a junior employee</h3>
       </div>
       <ul class="compare-bullets">
-        <li>Think of it as a savant analyst who only sort of learns over time</li>
-        <li>Provide context &mdash; background and why the work matters</li>
-        <li>Give clear instructions, then check its work (and ask it to check its own)</li>
+        <li>Give context &mdash; background and why the work matters</li>
+        <li>Give clear instructions, then check its work</li>
         <li>Question it if something feels off</li>
       </ul>
     </div>
@@ -2351,7 +2348,7 @@
   <div class="compare-grid" style="grid-template-columns: 1fr 1fr 1fr; gap: 16px;">
     <div class="compare-card">
       <div class="compare-card-header">
-        <h3><a href="https://technicallycurious.substack.com/p/create-your-personal-agent-with-claude" target="_blank" style="color: inherit; text-decoration: none; border-bottom: 2px solid var(--accent);">Create your personal agent with Claude</a></h3>
+        <h3><a href="https://technicallycurious.substack.com/p/create-your-personal-agent-with-claude" target="_blank" style="color: inherit; text-decoration: none;">Create your personal agent with Claude <span style="font-size: 16px; opacity: 0.5;">&#8599;</span></a></h3>
       </div>
       <ul class="compare-bullets">
         <li>Teach Claude to assist in everything you do &mdash; without any technical knowledge</li>
@@ -2359,7 +2356,7 @@
     </div>
     <div class="compare-card">
       <div class="compare-card-header">
-        <h3><a href="https://technicallycurious.substack.com/p/claude-code-for-business-users-getting" target="_blank" style="color: inherit; text-decoration: none; border-bottom: 2px solid var(--accent);">Claude Code for Business Users</a></h3>
+        <h3><a href="https://technicallycurious.substack.com/p/claude-code-for-business-users-getting" target="_blank" style="color: inherit; text-decoration: none;">Claude Code for Business Users <span style="font-size: 16px; opacity: 0.5;">&#8599;</span></a></h3>
       </div>
       <ul class="compare-bullets">
         <li>How to start from square one &mdash; install Claude Code and let Claude do the rest</li>
@@ -2367,7 +2364,7 @@
     </div>
     <div class="compare-card">
       <div class="compare-card-header">
-        <h3><a href="https://technicallycurious.substack.com/p/ai-finally-makes-great-slides" target="_blank" style="color: inherit; text-decoration: none; border-bottom: 2px solid var(--accent);">AI Finally Makes Great Slides</a></h3>
+        <h3><a href="https://technicallycurious.substack.com/p/ai-finally-makes-great-slides" target="_blank" style="color: inherit; text-decoration: none;">AI Finally Makes Great Slides <span style="font-size: 16px; opacity: 0.5;">&#8599;</span></a></h3>
       </div>
       <ul class="compare-bullets">
         <li>Gemini and Claude can both make great slides &mdash; more people need to know</li>
@@ -2375,7 +2372,7 @@
     </div>
     <div class="compare-card">
       <div class="compare-card-header">
-        <h3><a href="https://technicallycurious.substack.com/p/ai-browsing-glimmers-of-magic-and" target="_blank" style="color: inherit; text-decoration: none; border-bottom: 2px solid var(--accent);">AI Browsing &mdash; Glimmers of Magic (and Risk)</a></h3>
+        <h3><a href="https://technicallycurious.substack.com/p/ai-browsing-glimmers-of-magic-and" target="_blank" style="color: inherit; text-decoration: none;">AI Browsing &mdash; Glimmers of Magic (and Risk) <span style="font-size: 16px; opacity: 0.5;">&#8599;</span></a></h3>
       </div>
       <ul class="compare-bullets">
         <li>Let AI see and take actions on your screen &mdash; just manage the risks as you go</li>
@@ -2383,7 +2380,7 @@
     </div>
     <div class="compare-card">
       <div class="compare-card-header">
-        <h3><a href="https://technicallycurious.substack.com/p/claude-skills" target="_blank" style="color: inherit; text-decoration: none; border-bottom: 2px solid var(--accent);">Claude Skills</a></h3>
+        <h3><a href="https://technicallycurious.substack.com/p/claude-skills" target="_blank" style="color: inherit; text-decoration: none;">Claude Skills <span style="font-size: 16px; opacity: 0.5;">&#8599;</span></a></h3>
       </div>
       <ul class="compare-bullets">
         <li>Stop copy-pasting prompts and start using Claude Skills to supercharge Claude's capabilities</li>
