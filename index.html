@@ -1,0 +1,2245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recalc AI Presentation — Light Slide Prototypes v2</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:       #0B1D3A;
+    --navy-mid:   #132D54;
+    --blue:       #1B6AC9;
+    --blue-light: #3B8AE8;
+    --blue-pale:  #E8F0FE;
+    --cyan:       #00B4D8;
+    --teal:       #0097B2;
+    --white:      #FFFFFF;
+    --gray-50:    #F7F8FA;
+    --gray-100:   #EEF0F4;
+    --gray-200:   #D8DCE4;
+    --gray-300:   #B0B8C8;
+    --gray-400:   #9CA3AF;
+    --gray-600:   #4B5563;
+    --gray-800:   #1F2937;
+    --green:      #10B981;
+    --amber:      #F59E0B;
+    --red:        #EF4444;
+    --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --slide-pad: 72px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--font);
+    background: #1a1a2e;
+    color: var(--gray-800);
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .slide-label { display: none; }
+
+  .slide {
+    width: 1280px;
+    height: 720px;
+    margin: 0;
+    display: none;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
+  }
+
+  .slide-label {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gray-400);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .recalc-logo {
+    position: absolute;
+    bottom: 28px;
+    right: 40px;
+    height: 28px;
+    width: auto;
+    opacity: 0.6;
+  }
+
+  /* Top gradient bar on every slide */
+  .slide::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, var(--blue) 0%, var(--cyan) 100%);
+    z-index: 10;
+  }
+
+  /* Shared eyebrow */
+  .slide-eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 10px;
+  }
+
+
+  /* ============================================
+     SLIDE: COVER
+     ============================================ */
+  .slide-cover {
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover-corner-logo {
+    position: absolute;
+    bottom: 36px;
+    left: 48px;
+    height: 32px;
+    width: auto;
+    z-index: 1;
+    opacity: 0.7;
+  }
+
+  .cover-content {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cover-content h1 {
+    font-size: 54px;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+    max-width: 850px;
+  }
+
+  .cover-divider {
+    width: 500px;
+    height: 4px;
+    background: var(--blue);
+    margin-top: 28px;
+    border-radius: 2px;
+  }
+
+  .cover-content .cover-sub {
+    font-size: 22px;
+    font-weight: 300;
+    color: var(--gray-600);
+    letter-spacing: 0.2px;
+    max-width: 650px;
+    line-height: 1.6;
+    margin-top: 24px;
+  }
+
+
+
+  /* ============================================
+     SLIDE: WHO IS RECALC
+     ============================================ */
+  .slide-recalc {
+    background: var(--white);
+    padding: var(--slide-pad);
+    padding-top: 56px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .slide-recalc h1 {
+    font-size: 44px;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+
+  .slide-recalc .tagline {
+    font-size: 20px;
+    color: var(--gray-600);
+    margin-bottom: 40px;
+    line-height: 1.4;
+  }
+
+  .slide-recalc .tagline strong {
+    color: var(--blue);
+    font-weight: 700;
+  }
+
+  .recalc-body {
+    display: flex;
+    gap: 48px;
+    flex: 1;
+  }
+
+  .recalc-values {
+    width: 380px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .value-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .value-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: var(--blue-pale);
+    color: var(--blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .value-text {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--navy);
+  }
+
+  .recalc-programs {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    align-content: center;
+  }
+
+  .program-card {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-100);
+    border-radius: 14px;
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .program-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--blue);
+  }
+
+  .program-card h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.3;
+  }
+
+  .program-card p {
+    font-size: 12px;
+    color: var(--gray-400);
+    margin-top: 4px;
+  }
+
+
+  /* ============================================
+     SLIDE: AI IS MOVING FAST
+     ============================================ */
+  .slide-moving {
+    background: var(--gray-50);
+    padding: var(--slide-pad);
+    padding-top: 56px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .slide-moving h1 {
+    font-size: 44px;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+
+  .slide-moving .subtitle {
+    font-size: 18px;
+    color: var(--gray-600);
+    margin-bottom: 52px;
+  }
+
+  .objectives-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gray-300);
+    margin-bottom: 20px;
+  }
+
+  .objectives-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    flex: 1;
+    align-content: start;
+  }
+
+  .objective-card {
+    background: var(--white);
+    border: 1px solid var(--gray-100);
+    border-radius: 18px;
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .objective-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 12px;
+  }
+
+  .objective-num {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: var(--blue-pale);
+    color: var(--blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+
+  .objective-card h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.2;
+  }
+
+  .objective-card p {
+    font-size: 15px;
+    color: var(--gray-600);
+    line-height: 1.6;
+  }
+
+
+  /* ============================================
+     SLIDE: AGENDA (reusable, 3 variants)
+     ============================================ */
+  .slide-agenda {
+    background: var(--white);
+    display: flex;
+  }
+
+  .agenda-left {
+    width: 380px;
+    background: var(--gray-50);
+    border-right: 1px solid var(--gray-100);
+    padding: var(--slide-pad) 48px;
+    padding-top: 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .agenda-left h1 {
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  .agenda-left p {
+    font-size: 15px;
+    color: var(--gray-400);
+    line-height: 1.6;
+  }
+
+  .agenda-right {
+    flex: 1;
+    padding: 60px 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .agenda-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--gray-100);
+    cursor: default;
+  }
+  .agenda-item:last-child { border-bottom: none; }
+
+  .agenda-num {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 700;
+    flex-shrink: 0;
+    background: var(--gray-50);
+    color: var(--gray-400);
+  }
+
+  .agenda-item.active .agenda-num {
+    background: var(--blue);
+    color: var(--white);
+  }
+
+  .agenda-text { flex: 1; }
+
+  .agenda-text h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--gray-800);
+    margin-bottom: 2px;
+  }
+
+  .agenda-item.active .agenda-text h3 {
+    color: var(--blue);
+  }
+
+  .agenda-text p {
+    font-size: 14px;
+    color: var(--gray-600);
+    line-height: 1.4;
+  }
+
+  .agenda-arrow {
+    font-size: 18px;
+    color: var(--gray-200);
+  }
+  .agenda-item.active .agenda-arrow {
+    color: var(--blue);
+  }
+
+
+  /* ============================================
+     SLIDE: KEY PLAYERS
+     ============================================ */
+  .slide-players {
+    background: var(--white);
+    padding: var(--slide-pad);
+    padding-top: 56px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .slide-players h1 {
+    font-size: 44px;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+
+  .slide-players .subtitle {
+    font-size: 17px;
+    color: var(--gray-400);
+    margin-bottom: 36px;
+    max-width: 700px;
+  }
+
+  .players-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    align-items: stretch;
+  }
+
+  .player-card {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-100);
+    border-radius: 16px;
+    padding: 24px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .player-card.highlight {
+    background: var(--blue-pale);
+    border-color: rgba(27,106,201,0.2);
+    box-shadow: 0 4px 20px rgba(27,106,201,0.08);
+  }
+
+  .player-logo {
+    height: 28px;
+    width: auto;
+    object-fit: contain;
+    align-self: flex-start;
+  }
+
+  .player-card .company-label {
+    font-size: 10px; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--gray-400);
+    margin-bottom: 2px;
+  }
+
+  .player-card .company-name {
+    font-size: 26px; font-weight: 700; color: var(--navy);
+  }
+
+  .player-card .feature-section { flex: 1; }
+
+  .player-card .feature-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--gray-300); margin-bottom: 10px;
+  }
+  .player-card .feature-list {
+    list-style: none; display: flex; flex-direction: column; gap: 6px;
+  }
+  .player-card .feature-list li {
+    font-size: 13px; color: var(--gray-600); line-height: 1.4;
+    display: flex; align-items: flex-start; gap: 8px;
+  }
+  .player-card .feature-list li::before {
+    content: '\2192'; color: var(--blue-light); font-weight: 600; flex-shrink: 0;
+  }
+  .player-card.highlight .feature-list li::before { color: var(--blue); }
+
+  .sentiment-bar {
+    display: flex; align-items: flex-start; gap: 8px;
+    padding-top: 12px; border-top: 1px solid var(--gray-200);
+    margin-top: auto;
+    min-height: 52px;
+  }
+  .player-card.highlight .sentiment-bar { border-top-color: rgba(27,106,201,0.15); }
+
+  .sentiment-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 3px; }
+  .sentiment-dot.red    { background: var(--red); }
+  .sentiment-dot.amber  { background: var(--amber); }
+  .sentiment-dot.green  { background: var(--green); }
+  .sentiment-dot.lime   { background: #84CC16; }
+  .sentiment-text { font-size: 12px; font-weight: 500; color: var(--gray-400); }
+
+
+  /* ============================================
+     SLIDE: WHAT WE'RE COVERING (two-panel)
+     ============================================ */
+  .slide-covering {
+    background: var(--gray-50);
+    padding: var(--slide-pad);
+    padding-top: 56px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .slide-covering h1 {
+    font-size: 40px; font-weight: 800; color: var(--navy); margin-bottom: 48px;
+  }
+
+  .covering-panels {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 28px; flex: 1;
+  }
+
+  .cover-panel {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 40px 36px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--gray-100);
+  }
+  .cover-panel::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+  }
+  .cover-panel.panel-1::before {
+    background: linear-gradient(180deg, var(--blue), var(--cyan));
+  }
+  .cover-panel.panel-2::before {
+    background: linear-gradient(180deg, var(--navy), var(--blue));
+  }
+
+  .panel-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; margin-bottom: 24px;
+  }
+  .panel-1 .panel-icon {
+    background: linear-gradient(135deg, rgba(27,106,201,0.08), rgba(0,180,216,0.08));
+    color: var(--blue);
+  }
+  .panel-2 .panel-icon {
+    background: linear-gradient(135deg, rgba(11,29,58,0.08), rgba(27,106,201,0.08));
+    color: var(--navy);
+  }
+
+  .cover-panel .panel-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--gray-400); margin-bottom: 10px;
+  }
+  .cover-panel h2 {
+    font-size: 26px; font-weight: 700; color: var(--navy); line-height: 1.25; margin-bottom: 16px;
+  }
+  .cover-panel p {
+    font-size: 15px; color: var(--gray-600); line-height: 1.6;
+  }
+
+
+  /* ============================================
+     SLIDE: FEATURE (Claude in Excel / PPT / Gemini Canvas)
+     ============================================ */
+  .slide-feature {
+    background: var(--white);
+    display: flex;
+  }
+
+  .feature-content {
+    width: 480px;
+    padding: 64px 56px;
+    padding-top: 52px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .feature-content h1 {
+    font-size: 38px; font-weight: 800; color: var(--navy);
+    line-height: 1.15; margin-bottom: 28px;
+  }
+
+  .feature-list {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 16px; margin-bottom: 32px;
+  }
+  .feature-list li {
+    display: flex; align-items: flex-start; gap: 12px;
+    font-size: 15px; color: var(--gray-600); line-height: 1.5;
+  }
+  .feature-list li .check {
+    width: 22px; height: 22px; border-radius: 6px;
+    background: rgba(27,106,201,0.08); color: var(--blue);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; flex-shrink: 0; margin-top: 1px;
+  }
+
+  .feature-callout {
+    background: #FEF3CD; border-radius: 12px; padding: 16px 20px;
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 13px; color: var(--gray-600); line-height: 1.5;
+    border: 1px solid #F5DFA0;
+  }
+  .feature-callout .icon { flex-shrink: 0; font-size: 16px; color: var(--amber); }
+
+  .feature-callout.info {
+    background: var(--blue-pale);
+    border-color: rgba(27,106,201,0.15);
+  }
+  .feature-callout.info .icon { color: var(--blue); }
+
+  .feature-visual {
+    flex: 1;
+    background: var(--gray-50);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+
+  .feature-visual .mock-screenshot {
+    width: 88%; height: 80%;
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
+    display: flex; flex-direction: column; overflow: hidden;
+  }
+
+  .mock-titlebar {
+    height: 32px; background: var(--gray-100);
+    display: flex; align-items: center; padding: 0 12px; gap: 6px;
+  }
+  .mock-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--gray-200); }
+
+  .mock-body {
+    flex: 1; display: grid; grid-template-columns: 1fr 200px;
+  }
+
+  .mock-sheet {
+    padding: 12px;
+    display: grid; grid-template-columns: repeat(6, 1fr); grid-template-rows: repeat(8, 1fr);
+    gap: 1px; background: var(--gray-100);
+  }
+  .mock-cell {
+    background: var(--white); padding: 4px 6px;
+    font-size: 8px; color: var(--gray-600);
+    display: flex; align-items: center;
+  }
+  .mock-cell.header {
+    background: var(--gray-50); font-weight: 600; color: var(--gray-800); font-size: 7px;
+  }
+
+  .mock-sidebar {
+    background: var(--blue-pale);
+    border-left: 1px solid rgba(27,106,201,0.12);
+    padding: 16px;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .mock-sidebar-title {
+    color: var(--navy); font-size: 10px; font-weight: 700; margin-bottom: 4px;
+  }
+  .mock-sidebar-btn {
+    background: var(--white); border: 1px solid var(--gray-200);
+    border-radius: 6px; padding: 8px 10px;
+    font-size: 8px; color: var(--gray-600);
+  }
+
+  /* PPT / Canvas mock variant */
+  .mock-body-ppt {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 180px 1fr;
+  }
+
+  .mock-slide-panel {
+    background: var(--gray-50);
+    border-right: 1px solid var(--gray-100);
+    padding: 12px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .mock-slide-thumb {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: 4px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 7px;
+    color: var(--gray-400);
+  }
+  .mock-slide-thumb.active {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 2px rgba(27,106,201,0.2);
+  }
+
+  .mock-main-canvas {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .mock-canvas-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+
+  .mock-canvas-body {
+    font-size: 8px;
+    color: var(--gray-400);
+    text-align: center;
+    max-width: 280px;
+    line-height: 1.4;
+  }
+
+  .mock-canvas-box {
+    width: 200px;
+    height: 60px;
+    background: var(--blue-pale);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px;
+    color: var(--blue);
+    font-weight: 600;
+  }
+
+  .mock-ai-bar {
+    background: var(--gray-50);
+    border-top: 1px solid var(--gray-100);
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 8px;
+    color: var(--gray-400);
+  }
+
+  .mock-ai-input {
+    flex: 1;
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: 4px;
+    padding: 6px 8px;
+    font-size: 8px;
+    color: var(--gray-400);
+  }
+
+  .mock-ai-send {
+    background: var(--blue);
+    color: var(--white);
+    border-radius: 4px;
+    padding: 6px 10px;
+    font-size: 7px;
+    font-weight: 600;
+  }
+
+
+  /* ============================================
+     SLIDE: AI PERSONAL ASSISTANT (workflow)
+     ============================================ */
+  .slide-assistant {
+    background: var(--white);
+    padding: var(--slide-pad);
+    padding-top: 56px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .slide-assistant h1 {
+    font-size: 40px; font-weight: 800; color: var(--navy); margin-bottom: 6px;
+  }
+  .slide-assistant .subtitle {
+    font-size: 16px; color: var(--gray-400);
+    margin-bottom: 36px; max-width: 720px; line-height: 1.5;
+  }
+
+  .workflow-section-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 2.5px;
+    text-transform: uppercase; color: var(--gray-300); margin-bottom: 14px;
+  }
+
+  .workflow-row {
+    display: flex; gap: 16px; margin-bottom: 24px;
+  }
+
+  .workflow-card {
+    flex: 1;
+    background: var(--gray-50);
+    border: 1px solid var(--gray-100);
+    border-radius: 14px;
+    padding: 22px 20px;
+    position: relative; overflow: hidden;
+  }
+  .workflow-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 3px;
+  }
+  .workflow-row:first-of-type .workflow-card::before {
+    background: linear-gradient(90deg, var(--blue), var(--cyan));
+  }
+  .workflow-row:last-of-type .workflow-card::before {
+    background: linear-gradient(90deg, var(--blue-light), var(--teal));
+  }
+
+  .wf-icon { font-size: 20px; margin-bottom: 10px; display: block; }
+  .wf-title { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+  .wf-desc { font-size: 12px; color: var(--gray-400); line-height: 1.5; }
+
+
+  /* ============================================
+     SLIDE: SECTION DIVIDER
+     ============================================ */
+  .slide-divider {
+    background: var(--gray-50);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .slide-divider::after {
+    content: '';
+    position: absolute;
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(27,106,201,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .divider-content { text-align: center; position: relative; z-index: 1; }
+  .divider-content h1 {
+    font-size: 52px; font-weight: 800; color: var(--navy);
+    line-height: 1.1; margin-bottom: 12px;
+  }
+  .divider-content p {
+    font-size: 20px; color: var(--gray-600);
+    max-width: 550px; margin: 0 auto;
+  }
+  .divider-boxes {
+    display: flex;
+    gap: 24px;
+    margin-top: 36px;
+    width: 800px;
+  }
+  .divider-box {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: 12px;
+    padding: 24px 28px;
+    text-align: left;
+    flex: 1;
+  }
+  .divider-box h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+  .divider-box p {
+    font-size: 14px;
+    color: var(--gray-600);
+    line-height: 1.5;
+  }
+  .divider-box ul {
+    font-size: 14px;
+    color: var(--gray-600);
+    line-height: 1.6;
+    margin-top: 4px;
+    padding-left: 18px;
+  }
+
+
+  /* ============================================
+     SLIDE: CODE/COWORK vs CHAT (3-column)
+     ============================================ */
+  .slide-compare {
+    background: var(--gray-50);
+    padding: var(--slide-pad);
+    padding-top: 56px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .slide-compare h1 {
+    font-size: 40px; font-weight: 800; color: var(--navy);
+    line-height: 1.1; margin-bottom: 6px;
+  }
+
+  .slide-compare .subtitle {
+    font-size: 16px; color: var(--gray-400);
+    margin-bottom: 36px;
+  }
+
+  .compare-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    flex: 1;
+    align-content: start;
+  }
+
+  .compare-card {
+    background: var(--white);
+    border: 1px solid var(--gray-100);
+    border-radius: 18px;
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .compare-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .compare-icon {
+    width: 40px; height: 40px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0;
+  }
+  .compare-icon.blue { background: var(--blue-pale); color: var(--blue); }
+  .compare-icon.green { background: rgba(16,185,129,0.1); color: var(--green); }
+  .compare-icon.cyan { background: rgba(0,180,216,0.1); color: var(--cyan); }
+
+  .compare-card-header h3 {
+    font-size: 20px; font-weight: 700; color: var(--navy);
+  }
+
+  .compare-bullets {
+    list-style: none; display: flex; flex-direction: column; gap: 12px;
+  }
+  .compare-bullets li {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 14px; color: var(--gray-600); line-height: 1.5;
+  }
+  .compare-bullets li::before {
+    content: '\2192';
+    color: var(--blue-light);
+    font-weight: 600;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .compare-footer {
+    margin-top: 20px;
+    background: var(--white);
+    border: 1px solid var(--gray-100);
+    border-radius: 14px;
+    padding: 18px 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: var(--gray-600);
+  }
+  .compare-footer .star {
+    color: var(--amber);
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+
+  /* ============================================
+     SLIDE: WHAT MAKES AI ASSISTANT WORK (3-pillar)
+     ============================================ */
+  .slide-pillars {
+    background: var(--white);
+    padding: var(--slide-pad);
+    padding-top: 56px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .slide-pillars h1 {
+    font-size: 40px; font-weight: 800; color: var(--navy);
+    line-height: 1.1; margin-bottom: 40px;
+  }
+
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    flex: 1;
+    align-content: start;
+  }
+
+  .pillar-card {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-100);
+    border-radius: 18px;
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+  .pillar-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--blue), var(--cyan));
+  }
+
+  .pillar-card h3 {
+    font-size: 22px; font-weight: 700; color: var(--navy); margin-bottom: 24px;
+  }
+
+  .pillar-section-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--gray-300); margin-bottom: 8px;
+  }
+
+  .pillar-section-text {
+    font-size: 14px; color: var(--gray-600); line-height: 1.6; margin-bottom: 20px;
+  }
+
+  .pillars-footer {
+    margin-top: 20px;
+    background: linear-gradient(135deg, rgba(27,106,201,0.06), rgba(0,180,216,0.06));
+    border: 1px solid rgba(27,106,201,0.12);
+    border-radius: 14px;
+    padding: 20px 28px;
+    font-size: 15px;
+    color: var(--navy);
+    font-weight: 500;
+    text-align: center;
+    line-height: 1.5;
+  }
+
+
+  /* ============================================
+     SLIDE: AI ASSISTANT USE CASES (grid)
+     ============================================ */
+  .slide-usecases {
+    background: var(--gray-50);
+    padding: var(--slide-pad);
+    padding-top: 56px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .slide-usecases h1 {
+    font-size: 40px; font-weight: 800; color: var(--navy);
+    line-height: 1.1; margin-bottom: 6px;
+  }
+
+  .slide-usecases .subtitle {
+    font-size: 16px; color: var(--gray-400);
+    margin-bottom: 28px; max-width: 720px;
+  }
+
+  .usecase-section-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 2.5px;
+    text-transform: uppercase; color: var(--gray-300); margin-bottom: 14px;
+  }
+
+  .usecase-row {
+    display: flex; gap: 16px; margin-bottom: 20px;
+  }
+
+  .usecase-card {
+    flex: 1;
+    background: var(--white);
+    border: 1px solid var(--gray-100);
+    border-radius: 14px;
+    padding: 22px 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .usecase-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 3px;
+  }
+  .usecase-row.row-workflow .usecase-card::before {
+    background: linear-gradient(90deg, var(--blue), var(--cyan));
+  }
+  .usecase-row.row-research .usecase-card::before {
+    background: linear-gradient(90deg, var(--blue-light), var(--teal));
+  }
+
+  .uc-icon { font-size: 20px; margin-bottom: 10px; display: block; }
+  .uc-title { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+  .uc-desc { font-size: 12px; color: var(--gray-400); line-height: 1.5; }
+
+
+  /* ============================================
+     SLIDE: EXAMPLE USE CASE (demo-style)
+     ============================================ */
+  .slide-example {
+    background: var(--white);
+    padding: var(--slide-pad);
+    padding-top: 56px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .slide-example h1 {
+    font-size: 36px; font-weight: 800; color: var(--navy);
+    line-height: 1.15; margin-bottom: 36px;
+  }
+
+  .example-demo {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .example-output {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-100);
+    border-radius: 18px;
+    padding: 32px 40px;
+    width: 100%;
+    max-width: 900px;
+  }
+
+  .example-thinking {
+    font-size: 13px;
+    color: var(--gray-400);
+    margin-bottom: 12px;
+    font-style: italic;
+  }
+
+  .example-result-label {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .example-result-label .done-check {
+    color: var(--green);
+  }
+
+  .example-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .example-table th {
+    text-align: left;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gray-400);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 10px 16px;
+    border-bottom: 2px solid var(--gray-200);
+  }
+  .example-table td {
+    font-size: 14px;
+    color: var(--gray-800);
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--gray-100);
+  }
+  .example-table tr:last-child td { border-bottom: none; }
+  .example-table .emoji { margin-right: 6px; }
+
+
+  /* ============================================
+     SLIDE: EXAMPLE CHAT (Claude Code style)
+     ============================================ */
+  .slide-example-chat {
+    background: var(--white);
+    padding: var(--slide-pad);
+    padding-top: 56px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .slide-example-chat h1 {
+    font-size: 32px; font-weight: 800; color: var(--navy);
+    line-height: 1.15; margin-bottom: 32px;
+  }
+
+  .chat-demo {
+    flex: 1;
+    background: var(--gray-50);
+    border: 1px solid var(--gray-100);
+    border-radius: 18px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .chat-toolbar {
+    background: var(--white);
+    border-bottom: 1px solid var(--gray-100);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .chat-tab {
+    font-size: 12px; font-weight: 500; color: var(--gray-400);
+    padding: 6px 14px; border-radius: 6px; cursor: default;
+  }
+  .chat-tab.active {
+    background: var(--blue-pale); color: var(--blue); font-weight: 600;
+  }
+  .chat-path {
+    font-size: 11px; color: var(--gray-300); margin-left: auto;
+  }
+
+  .chat-messages {
+    flex: 1; padding: 24px 28px; display: flex; flex-direction: column; gap: 16px;
+    overflow: hidden;
+  }
+
+  .chat-msg {
+    display: flex; gap: 12px; max-width: 90%;
+  }
+  .chat-msg.user { align-self: flex-end; flex-direction: row-reverse; }
+
+  .chat-avatar {
+    width: 28px; height: 28px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700; flex-shrink: 0;
+  }
+  .chat-avatar.ai { background: var(--blue-pale); color: var(--blue); }
+  .chat-avatar.human { background: var(--gray-200); color: var(--gray-600); }
+
+  .chat-bubble {
+    background: var(--white);
+    border: 1px solid var(--gray-100);
+    border-radius: 12px;
+    padding: 14px 18px;
+    font-size: 13px;
+    color: var(--gray-600);
+    line-height: 1.6;
+  }
+  .chat-msg.user .chat-bubble {
+    background: var(--blue-pale);
+    border-color: rgba(27,106,201,0.12);
+    color: var(--navy);
+  }
+
+  .chat-bubble .action-item {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 12px; color: var(--gray-400); margin-top: 4px;
+  }
+  .chat-bubble .action-item .tool-tag {
+    background: var(--gray-100); border-radius: 4px; padding: 2px 6px;
+    font-size: 10px; font-weight: 600; color: var(--gray-400);
+    font-family: monospace;
+  }
+
+  .chat-input-bar {
+    background: var(--white);
+    border-top: 1px solid var(--gray-100);
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .chat-input-field {
+    flex: 1; background: var(--gray-50); border: 1px solid var(--gray-200);
+    border-radius: 8px; padding: 10px 14px;
+    font-size: 12px; color: var(--gray-400);
+  }
+  .chat-send-btn {
+    background: var(--blue); color: var(--white); border-radius: 8px;
+    padding: 10px 16px; font-size: 11px; font-weight: 600;
+  }
+
+  /* Presentation mode */
+  /* JS sets display on .active slides based on their type */
+
+  .slide-nav {
+    display: none;
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(11,29,58,0.3);
+    backdrop-filter: blur(12px);
+    border-radius: 10px;
+    padding: 6px 14px;
+    z-index: 100;
+  }
+  .slide-nav button {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.5);
+    font-size: 16px;
+    cursor: pointer;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-family: var(--font);
+  }
+  .slide-nav button:hover { background: rgba(255,255,255,0.15); color: #fff; }
+  .slide-counter {
+    color: rgba(255,255,255,0.5);
+    font-size: 13px;
+    font-weight: 500;
+    min-width: 60px;
+    text-align: center;
+    font-family: var(--font);
+  }
+</style>
+</head>
+<body>
+
+<!-- ==========================================
+     COVER
+     ========================================== -->
+<p class="slide-label">Cover</p>
+<div class="slide slide-cover">
+  <img class="cover-corner-logo" src="recalc-logo.png" alt="Recalc">
+  <div class="cover-content">
+    <h1>AI for Talent Leaders</h1>
+    <div class="cover-divider"></div>
+    <div class="cover-sub">Making sense of today's tools, capabilities, and use cases</div>
+  </div>
+</div>
+
+<!-- ==========================================
+     SLIDE 1: WHO IS RECALC
+     ========================================== -->
+<p class="slide-label">Slide 1 — Who is Recalc</p>
+<div class="slide slide-recalc">
+  <div class="slide-eyebrow">About Us</div>
+  <h1>Who is Recalc?</h1>
+  <div class="tagline"><strong>High-impact training</strong> to help you learn the skills you need to succeed in your career</div>
+
+  <div class="recalc-body">
+    <div class="recalc-values">
+      <div class="value-item">
+        <div class="value-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <div class="value-text">Expert instructors</div>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+            <path d="M2 17l10 5 10-5"/>
+            <path d="M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <div class="value-text">Concise, relevant curriculum</div>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+            <line x1="12" y1="19" x2="12" y2="23"/>
+            <line x1="8" y1="23" x2="16" y2="23"/>
+          </svg>
+        </div>
+        <div class="value-text">Highly interactive, live classes</div>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m11 17 2 2a1 1 0 1 0 3-3"/>
+            <path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/>
+            <path d="m21 3 1 11h-2"/>
+            <path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/>
+            <path d="M3 4h8"/>
+          </svg>
+        </div>
+        <div class="value-text">Personal, ongoing support</div>
+      </div>
+    </div>
+
+    <div class="recalc-programs">
+      <div class="program-card">
+        <h3>Private Equity Analyst/Associate Training</h3>
+      </div>
+      <div class="program-card">
+        <h3>AI Training</h3>
+      </div>
+      <div class="program-card">
+        <h3>Undergrad Programs:<br>Finance Accelerator &amp; PE Bootcamp</h3>
+      </div>
+      <div class="program-card">
+        <h3>Portfolio Company Spreadsheet &amp; Finance Training</h3>
+      </div>
+    </div>
+  </div>
+
+  <img class="recalc-logo" src="recalc-logo.png" alt="Recalc">
+</div>
+
+
+<!-- ==========================================
+     AGENDA (highlight: Overview)
+     ========================================== -->
+<p class="slide-label">Agenda (Overview active)</p>
+<div class="slide slide-agenda">
+  <div class="agenda-left">
+    <div class="slide-eyebrow">Agenda</div>
+    <h1>Today's<br>roadmap</h1>
+  </div>
+  <div class="agenda-right">
+    <div class="agenda-item active">
+      <div class="agenda-num">01</div>
+      <div class="agenda-text">
+        <h3>Overview</h3>
+        <p>Where AI stands today</p>
+      </div>
+      <div class="agenda-arrow">&#8250;</div>
+    </div>
+    <div class="agenda-item">
+      <div class="agenda-num">02</div>
+      <div class="agenda-text">
+        <h3>AI in your favorite tools</h3>
+        <p>Excel, PowerPoint, and web browsing</p>
+      </div>
+      <div class="agenda-arrow">&#8250;</div>
+    </div>
+    <div class="agenda-item">
+      <div class="agenda-num">03</div>
+      <div class="agenda-text">
+        <h3>The AI personal assistant</h3>
+        <p>From chat to agentic workflows</p>
+      </div>
+      <div class="agenda-arrow">&#8250;</div>
+    </div>
+    <div class="agenda-item">
+      <div class="agenda-num">04</div>
+      <div class="agenda-text">
+        <h3>HR use cases</h3>
+        <p>Practical applications for your team</p>
+      </div>
+      <div class="agenda-arrow">&#8250;</div>
+    </div>
+  </div>
+  <img class="recalc-logo" src="recalc-logo.png" alt="Recalc">
+</div>
+
+
+<!-- ==========================================
+     SLIDE 2: AI IS MOVING FAST
+     ========================================== -->
+<p class="slide-label">Slide 2 — AI is Moving Fast</p>
+<div class="slide slide-divider">
+  <div class="divider-content">
+    <h1>AI is moving <span style="color: var(--blue);">fast</span></h1>
+    <p>It's easy to feel like you're behind</p>
+  </div>
+  <img class="recalc-logo" src="recalc-logo.png" alt="Recalc">
+</div>
+
+
+<!-- ==========================================
+     SLIDE 2b: THAT CHANGES TODAY
+     ========================================== -->
+<p class="slide-label">Slide 2b — That Changes Today</p>
+<div class="slide slide-divider">
+  <div class="divider-content">
+    <h1>Let's get caught up <span style="color: var(--blue);">today</span></h1>
+    <div class="divider-boxes">
+      <div class="divider-box">
+        <h3>The Latest in AI</h3>
+        <ul>
+          <li>AI in your tools (Excel, PowerPoint, browser)</li>
+          <li>Chat box =&gt; Agent doing your work</li>
+        </ul>
+      </div>
+      <div class="divider-box">
+        <h3>Use Cases</h3>
+        <p>Practical examples you can try today - at work or personally</p>
+      </div>
+    </div>
+  </div>
+  <img class="recalc-logo" src="recalc-logo.png" alt="Recalc">
+</div>
+
+
+<!-- ==========================================
+     SLIDE 4: KEY PLAYERS IN AI
+     ========================================== -->
+<p class="slide-label">Slide 4 — Key Players</p>
+<div class="slide slide-players">
+  <div class="slide-eyebrow">Market Overview</div>
+  <h1>Major Players</h1>
+  <div class="subtitle">Everyone has chat.  Additional capabilities vary widely.</div>
+
+  <div class="players-grid">
+    <div class="player-card">
+      <!-- Microsoft logo -->
+      <svg class="player-logo" viewBox="0 0 23 23" fill="none"><rect width="11" height="11" fill="#F25022"/><rect x="12" width="11" height="11" fill="#7FBA00"/><rect y="12" width="11" height="11" fill="#00A4EF"/><rect x="12" y="12" width="11" height="11" fill="#FFB900"/></svg>
+      <div>
+        <div class="company-label">Microsoft</div>
+        <div class="company-name">Copilot</div>
+      </div>
+      <div class="feature-section">
+        <div class="feature-label">Beyond Chat</div>
+        <ul class="feature-list">
+          <li>Microsoft 365 integration</li>
+          <li>Excel, Word, PowerPoint add-ins</li>
+        </ul>
+      </div>
+      <div class="sentiment-bar">
+        <div class="sentiment-dot amber"></div>
+        <div class="sentiment-text">Doesn't seemt to work as well as others.  But is in Outlook and Office.</div>
+      </div>
+    </div>
+    <div class="player-card">
+      <!-- OpenAI logo -->
+      <svg class="player-logo" viewBox="0 0 24 24" fill="#202123"><path d="M22.28 9.37a6.04 6.04 0 0 0-.52-4.93 6.1 6.1 0 0 0-6.57-2.93A6.06 6.06 0 0 0 10.62 0a6.1 6.1 0 0 0-5.82 4.23 6.04 6.04 0 0 0-4.03 2.93 6.1 6.1 0 0 0 .75 7.15 6.04 6.04 0 0 0 .52 4.93 6.1 6.1 0 0 0 6.57 2.93A6.06 6.06 0 0 0 13.18 24a6.1 6.1 0 0 0 5.82-4.22 6.04 6.04 0 0 0 4.03-2.93 6.1 6.1 0 0 0-.75-7.48zM13.18 22.43a4.57 4.57 0 0 1-2.93-1.07l.15-.08 4.86-2.81a.79.79 0 0 0 .4-.69v-6.86l2.05 1.19a.07.07 0 0 1 .04.06v5.68a4.59 4.59 0 0 1-4.57 4.58zm-9.84-4.21a4.55 4.55 0 0 1-.55-3.07l.15.09 4.86 2.81a.79.79 0 0 0 .79 0l5.94-3.43v2.37a.07.07 0 0 1-.03.06l-4.92 2.84a4.59 4.59 0 0 1-6.24-1.67zM2.18 7.87A4.56 4.56 0 0 1 4.56 5.8v5.78a.79.79 0 0 0 .4.69l5.93 3.42-2.05 1.19a.07.07 0 0 1-.07 0L3.86 14.04a4.59 4.59 0 0 1-1.68-6.17zm16.9 3.93-5.93-3.43 2.05-1.18a.07.07 0 0 1 .07 0l4.91 2.84a4.58 4.58 0 0 1-.7 8.28v-5.82a.79.79 0 0 0-.4-.69zm2.04-3.1-.14-.09-4.87-2.8a.79.79 0 0 0-.79 0L9.39 9.24V6.87a.07.07 0 0 1 .03-.06l4.92-2.84a4.58 4.58 0 0 1 6.78 4.73zM8.3 12.71 6.24 11.5a.07.07 0 0 1-.04-.06V5.76a4.58 4.58 0 0 1 7.5-3.52l-.14.08-4.87 2.81a.79.79 0 0 0-.4.69zm1.11-2.41 2.65-1.53 2.64 1.53v3.05l-2.64 1.53-2.65-1.53z"/></svg>
+      <div>
+        <div class="company-label">OpenAI</div>
+        <div class="company-name">ChatGPT</div>
+      </div>
+      <div class="feature-section">
+        <div class="feature-label">Beyond Chat</div>
+        <ul class="feature-list">
+          <li>Codex for coding</li>
+          <li>Atlas (AI browser)</li>
+        </ul>
+      </div>
+      <div class="sentiment-bar">
+        <div class="sentiment-dot amber"></div>
+        <div class="sentiment-text">Largest consumer mindshare. Limited features beyond chat.</div>
+      </div>
+    </div>
+    <div class="player-card">
+      <!-- Anthropic logo -->
+      <svg class="player-logo" viewBox="0 0 24 16" fill="#191918"><path d="M13.55 0 24 16h-4.67L8.88 0h4.67ZM5.33 0 0 16h4.55l1.04-2.88h5.9L10.6 16h4.56L9.78 0H5.33Zm.73 10.16 1.96-5.45 1.97 5.45H6.06Z"/></svg>
+      <div>
+        <div class="company-label">Anthropic</div>
+        <div class="company-name">Claude</div>
+      </div>
+      <div class="feature-section">
+        <div class="feature-label">Beyond Chat</div>
+        <ul class="feature-list">
+          <li>Claude Code and Cowork</li>
+          <li>Claude in Chrome</li>
+          <li>Claude in Excel and PPT</li>
+        </ul>
+      </div>
+      <div class="sentiment-bar">
+        <div class="sentiment-dot green"></div>
+        <div class="sentiment-text">Tremendous enthusiasm, especially among early adopters</div>
+      </div>
+    </div>
+    <div class="player-card">
+      <!-- Google logo -->
+      <svg class="player-logo" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09a6.87 6.87 0 0 1 0-4.17V7.08H2.18a11.02 11.02 0 0 0 0 9.84l3.66-2.84z" fill="#FBBC05"/><path d="M12 4.75c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 1.09 14.97 0 12 0 7.7 0 3.99 2.47 2.18 6.07l3.66 2.84c.87-2.6 3.3-4.16 6.16-4.16z" fill="#EA4335"/></svg>
+      <div>
+        <div class="company-label">Google</div>
+        <div class="company-name">Gemini</div>
+      </div>
+      <div class="feature-section">
+        <div class="feature-label">Beyond Chat</div>
+        <ul class="feature-list">
+          <li>Gemini in Chrome</li>
+          <li>Workspace integration</li>
+          <li>Canvas (Slides and more)</li>
+          <li>NotebookLM</li>
+        </ul>
+      </div>
+      <div class="sentiment-bar">
+        <div class="sentiment-dot lime"></div>
+        <div class="sentiment-text">Gaining steam.  Models and tools have improved quickly.</div>
+      </div>
+    </div>
+  </div>
+  <img class="recalc-logo" src="recalc-logo.png" alt="Recalc">
+</div>
+
+
+<!-- ==========================================
+     SLIDE 5: WHAT WE'RE COVERING
+     ========================================== -->
+<p class="slide-label">Slide 5 — What We're Covering</p>
+<div class="slide slide-covering">
+  <div class="slide-eyebrow">Today's Session</div>
+  <h1>Two Key Topics</h1>
+
+  <div class="covering-panels">
+    <div class="cover-panel panel-1">
+      <div class="panel-icon">&#9881;</div>
+      <div class="panel-label">Iterative Productivity</div>
+      <h2>AI in your favorite tools</h2>
+      <p>We'll explore recent new capabilities including AI slide creation, AI web browsing and AI in Excel</p>
+    </div>
+    <div class="cover-panel panel-2">
+      <div class="panel-icon">&#9889;</div>
+      <div class="panel-label">Introducing the Personal Assistant</div>
+      <h2>The shift from Chat to Agentic AI</h2>
+      <p>A second brain connected to your tools &mdash; with memory and context &mdash; that can actually take action for you</p>
+    </div>
+  </div>
+  <img class="recalc-logo" src="recalc-logo.png" alt="Recalc">
+</div>
+
+
+<!-- ==========================================
+     SLIDE 6: AGENDA (highlight: New capabilities)
+     ========================================== -->
+<p class="slide-label">Slide 6 — Agenda (New Capabilities active)</p>
+<div class="slide slide-agenda">
+  <div class="agenda-left">
+    <div class="slide-eyebrow">Agenda</div>
+    <h1>Today's<br>roadmap</h1>
+  </div>
+  <div class="agenda-right">
+    <div class="agenda-item">
+      <div class="agenda-num">01</div>
+      <div class="agenda-text">
+        <h3>Overview</h3>
+        <p>Where AI stands today</p>
+      </div>
+      <div class="agenda-arrow">&#8250;</div>
+    </div>
+    <div class="agenda-item active">
+      <div class="agenda-num">02</div>
+      <div class="agenda-text">
+        <h3>AI in your favorite tools</h3>
+        <p>Excel, PowerPoint, and web browsing</p>
+      </div>
+      <div class="agenda-arrow">&#8250;</div>
+    </div>
+    <div class="agenda-item">
+      <div class="agenda-num">03</div>
+      <div class="agenda-text">
+        <h3>The AI personal assistant</h3>
+        <p>From chat to agentic workflows</p>
+      </div>
+      <div class="agenda-arrow">&#8250;</div>
+    </div>
+    <div class="agenda-item">
+      <div class="agenda-num">04</div>
+      <div class="agenda-text">
+        <h3>HR use cases</h3>
+        <p>Practical applications for your team</p>
+      </div>
+      <div class="agenda-arrow">&#8250;</div>
+    </div>
+  </div>
+  <img class="recalc-logo" src="recalc-logo.png" alt="Recalc">
+</div>
+
+
+<!-- ==========================================
+     SLIDE 7: CLAUDE IN EXCEL
+     ========================================== -->
+<p class="slide-label">Slide 7 — Claude in Excel</p>
+<div class="slide slide-feature">
+  <div class="feature-content">
+    <div class="slide-eyebrow">New Capability</div>
+    <h1>Claude in Excel</h1>
+    <ul class="feature-list">
+      <li><span class="check">&#10003;</span><span>Install via Add-ins &mdash; search for "Claude"</span></li>
+      <li><span class="check">&#10003;</span><span>Requires Max, Pro, Teams or Enterprise account</span></li>
+      <li><span class="check">&#10003;</span><span>Chat with your data, query and run analysis directly in the side panel</span></li>
+      <li><span class="check">&#10003;</span><span>Linked-up analysis with formulas and cell references</span></li>
+    </ul>
+    <div class="feature-callout">
+      <span class="icon">&#9888;</span>
+      <span>Only use with trusted spreadsheets. Risk of "indirect prompt injection" with untrusted or downloaded files.</span>
+    </div>
+  </div>
+
+  <div class="feature-visual">
+    <div class="mock-screenshot">
+      <div class="mock-titlebar">
+        <div class="mock-dot"></div><div class="mock-dot"></div><div class="mock-dot"></div>
+        <span style="font-size: 10px; color: var(--gray-400); margin-left: 8px;">Raw Census Data</span>
+      </div>
+      <div class="mock-body">
+        <div class="mock-sheet">
+          <div class="mock-cell header">Employee ID</div><div class="mock-cell header">Name</div><div class="mock-cell header">Title</div><div class="mock-cell header">Location</div><div class="mock-cell header">Team</div><div class="mock-cell header">Salary</div>
+          <div class="mock-cell">1001</div><div class="mock-cell">Mary Candor</div><div class="mock-cell">CEO</div><div class="mock-cell">CA</div><div class="mock-cell">Executive</div><div class="mock-cell">$200,000</div>
+          <div class="mock-cell">1002</div><div class="mock-cell">Jackie T.</div><div class="mock-cell">Acct Mgr</div><div class="mock-cell">NY</div><div class="mock-cell">Sales</div><div class="mock-cell">$125,000</div>
+          <div class="mock-cell">1003</div><div class="mock-cell">Sarah Harvey</div><div class="mock-cell">CFO</div><div class="mock-cell">NY</div><div class="mock-cell">Finance</div><div class="mock-cell">$190,000</div>
+          <div class="mock-cell">1004</div><div class="mock-cell">Joan Perkins</div><div class="mock-cell">Dir Product</div><div class="mock-cell">CA</div><div class="mock-cell">Product</div><div class="mock-cell">$175,000</div>
+          <div class="mock-cell">1005</div><div class="mock-cell">Frank S.</div><div class="mock-cell">Sales Mgr</div><div class="mock-cell">NY</div><div class="mock-cell">Sales</div><div class="mock-cell">$135,000</div>
+          <div class="mock-cell">1006</div><div class="mock-cell">Briana Royer</div><div class="mock-cell">SW Engineer</div><div class="mock-cell">CA</div><div class="mock-cell">Engineering</div><div class="mock-cell">$110,000</div>
+          <div class="mock-cell">1008</div><div class="mock-cell">Bryan Brown</div><div class="mock-cell">CMO</div><div class="mock-cell">NY</div><div class="mock-cell">Marketing</div><div class="mock-cell">$140,000</div>
+        </div>
+        <div class="mock-sidebar">
+          <div class="mock-sidebar-title">Claude in Excel</div>
+          <div class="mock-sidebar-btn">Take actions in Excel</div>
+          <div class="mock-sidebar-btn">Build financial models</div>
+          <div class="mock-sidebar-btn">Explain this workbook</div>
+          <div class="mock-sidebar-btn">Transform messy data</div>
+          <div class="mock-sidebar-btn">Debug my formulas</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <img class="recalc-logo" src="recalc-logo.png" alt="Recalc">
+</div>
+
+
+<!-- ==========================================
+     SLIDE 8: CLAUDE IN POWERPOINT
+     ========================================== -->
+<p class="slide-label">Slide 8 — Claude in PowerPoint</p>
+<div class="slide slide-feature">
+  <div class="feature-content">
+    <div class="slide-eyebrow">New Capability</div>
+    <h1>Claude in PowerPoint</h1>
+    <ul class="feature-list">
+      <li><span class="check">&#10003;</span><span>Available as a PowerPoint Add-in via the Add-ins menu</span></li>
+      <li><span class="check">&#10003;</span><span>Requires Max, Pro, Teams or Enterprise Claude account</span></li>
+      <li><span class="check">&#10003;</span><span>Generate slides from a prompt, outline, or existing content</span></li>
+      <li><span class="check">&#10003;</span><span>Edit, reformat, and restructure existing presentations</span></li>
+      <li><span class="check">&#10003;</span><span>Claude can read your slides and suggest improvements</span></li>
+    </ul>
+    <div class="feature-callout info">
+      <span class="icon">&#128161;</span>
+      <span>Best for iterating on existing decks &mdash; give Claude a rough draft and let it polish the structure and content.</span>
+    </div>
+  </div>
+
+  <div class="feature-visual">
+    <div class="mock-screenshot">
+      <div class="mock-titlebar">
+        <div class="mock-dot"></div><div class="mock-dot"></div><div class="mock-dot"></div>
+        <span style="font-size: 10px; color: var(--gray-400); margin-left: 8px;">Q4 Strategy Deck.pptx</span>
+      </div>
+      <div class="mock-body-ppt">
+        <div class="mock-slide-panel">
+          <div class="mock-slide-thumb">Slide 1</div>
+          <div class="mock-slide-thumb active">Slide 2</div>
+          <div class="mock-slide-thumb">Slide 3</div>
+          <div class="mock-slide-thumb">Slide 4</div>
+          <div class="mock-slide-thumb">Slide 5</div>
+          <div class="mock-slide-thumb">Slide 6</div>
+        </div>
+        <div style="display: flex; flex-direction: column; flex: 1;">
+          <div class="mock-main-canvas" style="flex: 1;">
+            <div class="mock-canvas-title">Q4 Strategic Priorities</div>
+            <div class="mock-canvas-body">Three key areas of focus for the quarter ahead</div>
+            <div style="display: flex; gap: 8px; margin-top: 8px;">
+              <div class="mock-canvas-box" style="width: 120px; height: 45px; font-size: 7px;">Growth Initiatives</div>
+              <div class="mock-canvas-box" style="width: 120px; height: 45px; font-size: 7px;">Operational Excellence</div>
+              <div class="mock-canvas-box" style="width: 120px; height: 45px; font-size: 7px;">Team Development</div>
+            </div>
+          </div>
+          <div class="mock-sidebar" style="border-left: none; border-top: 1px solid rgba(27,106,201,0.12); flex-direction: row; align-items: center; padding: 10px 16px;">
+            <div class="mock-sidebar-title" style="margin-bottom: 0; margin-right: 8px; white-space: nowrap;">Claude</div>
+            <div class="mock-ai-input">Redesign this slide with better visual hierarchy...</div>
+            <div class="mock-ai-send">Send</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <img class="recalc-logo" src="recalc-logo.png" alt="Recalc">
+</div>
+
+
+<!-- ==========================================
+     SLIDE 9: GEMINI IN CANVAS (Google Slides)
+     ========================================== -->
+<p class="slide-label">Slide 9 — Slides with Gemini in Canvas</p>
+<div class="slide slide-feature">
+  <div class="feature-content">
+    <div class="slide-eyebrow">New Capability</div>
+    <h1>Slides with Gemini in Canvas</h1>
+    <ul class="feature-list">
+      <li><span class="check">&#10003;</span><span>Built into Google Workspace &mdash; no add-in needed</span></li>
+      <li><span class="check">&#10003;</span><span>Generate full slide decks from a text prompt</span></li>
+      <li><span class="check">&#10003;</span><span>Auto-applies professional templates and layouts</span></li>
+      <li><span class="check">&#10003;</span><span>Edit individual slides with natural language instructions</span></li>
+      <li><span class="check">&#10003;</span><span>Deep integration with Google Slides, Docs, and Sheets</span></li>
+    </ul>
+    <div class="feature-callout info">
+      <span class="icon">&#128161;</span>
+      <span>Great for creating a first draft quickly &mdash; generates entire presentations from a single prompt with formatted layouts.</span>
+    </div>
+  </div>
+
+  <div class="feature-visual">
+    <div class="mock-screenshot">
+      <div class="mock-titlebar">
+        <div class="mock-dot"></div><div class="mock-dot"></div><div class="mock-dot"></div>
+        <span style="font-size: 10px; color: var(--gray-400); margin-left: 8px;">Google Slides &mdash; Gemini Canvas</span>
+      </div>
+      <div class="mock-body-ppt">
+        <div class="mock-slide-panel">
+          <div class="mock-slide-thumb active">Slide 1</div>
+          <div class="mock-slide-thumb">Slide 2</div>
+          <div class="mock-slide-thumb">Slide 3</div>
+          <div class="mock-slide-thumb">Slide 4</div>
+          <div class="mock-slide-thumb">Slide 5</div>
+          <div class="mock-slide-thumb" style="border: 1px dashed var(--gray-200); background: none; color: var(--blue); font-weight: 600;">+ AI</div>
+        </div>
+        <div style="display: flex; flex-direction: column; flex: 1;">
+          <div class="mock-main-canvas" style="flex: 1;">
+            <div class="mock-canvas-title">2026 Market Analysis</div>
+            <div class="mock-canvas-body">AI-generated slide with automated chart and layout</div>
+            <div style="display: flex; gap: 6px; margin-top: 8px; align-items: flex-end;">
+              <div style="width: 30px; height: 30px; background: var(--blue-pale); border-radius: 3px;"></div>
+              <div style="width: 30px; height: 50px; background: rgba(27,106,201,0.2); border-radius: 3px;"></div>
+              <div style="width: 30px; height: 40px; background: rgba(0,180,216,0.2); border-radius: 3px;"></div>
+              <div style="width: 30px; height: 65px; background: var(--blue); border-radius: 3px;"></div>
+              <div style="width: 30px; height: 55px; background: rgba(27,106,201,0.3); border-radius: 3px;"></div>
+            </div>
+          </div>
+          <div class="mock-ai-bar">
+            <span style="font-size: 9px; font-weight: 600; color: var(--gray-600);">&#10024; Gemini</span>
+            <div class="mock-ai-input">Create a presentation about Q2 market trends...</div>
+            <div class="mock-ai-send" style="background: #4285F4;">Generate</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <img class="recalc-logo" src="recalc-logo.png" alt="Recalc">
+</div>
+
+
+<!-- ==========================================
+     SLIDE 10: AGENDA (highlight: AI Personal Assistant)
+     ========================================== -->
+<p class="slide-label">Slide 10 — Agenda (AI Personal Assistant active)</p>
+<div class="slide slide-agenda">
+  <div class="agenda-left">
+    <div class="slide-eyebrow">Agenda</div>
+    <h1>Today's<br>roadmap</h1>
+  </div>
+  <div class="agenda-right">
+    <div class="agenda-item">
+      <div class="agenda-num">01</div>
+      <div class="agenda-text">
+        <h3>Overview</h3>
+        <p>Where AI stands today</p>
+      </div>
+      <div class="agenda-arrow">&#8250;</div>
+    </div>
+    <div class="agenda-item">
+      <div class="agenda-num">02</div>
+      <div class="agenda-text">
+        <h3>AI in your favorite tools</h3>
+        <p>Excel, PowerPoint, and web browsing</p>
+      </div>
+      <div class="agenda-arrow">&#8250;</div>
+    </div>
+    <div class="agenda-item active">
+      <div class="agenda-num">03</div>
+      <div class="agenda-text">
+        <h3>The AI personal assistant</h3>
+        <p>From chat to agentic workflows</p>
+      </div>
+      <div class="agenda-arrow">&#8250;</div>
+    </div>
+    <div class="agenda-item">
+      <div class="agenda-num">04</div>
+      <div class="agenda-text">
+        <h3>HR use cases</h3>
+        <p>Practical applications for your team</p>
+      </div>
+      <div class="agenda-arrow">&#8250;</div>
+    </div>
+  </div>
+  <img class="recalc-logo" src="recalc-logo.png" alt="Recalc">
+</div>
+
+
+<!-- ==========================================
+     SLIDE 11: CODE/COWORK vs TRADITIONAL CHAT
+     ========================================== -->
+<p class="slide-label">Slide 11 &mdash; Code/Cowork vs. Traditional Chat</p>
+<div class="slide slide-compare">
+  <div class="slide-eyebrow">Beyond Chat</div>
+  <h1>Claude Code/Cowork vs. Traditional Chat?</h1>
+  <div class="subtitle">Use cases that are hard or impossible in regular chat</div>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <div class="compare-card-header">
+        <div class="compare-icon blue">&#10003;</div>
+        <h3>Stays on Task</h3>
+      </div>
+      <ul class="compare-bullets">
+        <li>Direct research across multiple tools (NotebookLM, Grok, paywalled sources)</li>
+        <li>Meeting prep from variety of sources</li>
+        <li>Analysis that spans multiple tools</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <div class="compare-card-header">
+        <div class="compare-icon green">&#128218;</div>
+        <h3>Second Brain</h3>
+      </div>
+      <ul class="compare-bullets">
+        <li>To-do list management</li>
+        <li>Client notes &amp; reminders</li>
+        <li>Team management context</li>
+        <li>Scheduling assistance</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <div class="compare-card-header">
+        <div class="compare-icon cyan">&#128200;</div>
+        <h3>Handles Volume</h3>
+      </div>
+      <ul class="compare-bullets">
+        <li>Months of expenses &rarr; categorized</li>
+        <li>Resume batches &rarr; spreadsheet</li>
+        <li>Many contracts &rarr; terms summary</li>
+        <li>DDQs, RFPs, customer feedback</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="compare-footer">
+    <span class="star">&#9733;</span>
+    <span><strong>And more:</strong> Reorganize files on your computer &middot; Build n8n automations &middot; Build full websites and apps</span>
+  </div>
+
+  <img class="recalc-logo" src="recalc-logo.png" alt="Recalc">
+</div>
+
+
+<!-- ==========================================
+     SLIDE 12: WHAT MAKES AI PERSONAL ASSISTANT WORK
+     ========================================== -->
+<p class="slide-label">Slide 12 &mdash; What Makes an AI Personal Assistant Work</p>
+<div class="slide slide-pillars">
+  <div class="slide-eyebrow">The Building Blocks</div>
+  <h1>What Makes an AI Personal Assistant Work?</h1>
+
+  <div class="pillars-grid">
+    <div class="pillar-card">
+      <h3>Memory</h3>
+      <div class="pillar-section-label">What It Is</div>
+      <div class="pillar-section-text">Provide context about you, your work and how you like things done</div>
+      <div class="pillar-section-label">Claude Example</div>
+      <div class="pillar-section-text">Have Claude take notes on your conversations in a notes folder.</div>
+    </div>
+    <div class="pillar-card">
+      <h3>Skills</h3>
+      <div class="pillar-section-label">What It Is</div>
+      <div class="pillar-section-text">Teach how you want things done, similar to a checklist for a new employee</div>
+      <div class="pillar-section-label">Claude Example</div>
+      <div class="pillar-section-text">Ask Claude to create skills in real-time as you are executing tasks</div>
+    </div>
+    <div class="pillar-card">
+      <h3>Connectors</h3>
+      <div class="pillar-section-label">What It Is</div>
+      <div class="pillar-section-text">Connect the AI to your systems (email, calendar, internal drive, team chat etc)</div>
+      <div class="pillar-section-label">Claude Example</div>
+      <div class="pillar-section-text">Use Rube, a connector service, which makes connecting tools surprisingly easy</div>
+    </div>
+  </div>
+
+  <div class="pillars-footer">
+    Memory, skills, and connectors are very powerful ideas that enable the AI personal assistant, but are remarkably easy to do in practice
+  </div>
+
+  <img class="recalc-logo" src="recalc-logo.png" alt="Recalc">
+</div>
+
+
+<!-- ==========================================
+     SLIDE 13: THE AI PERSONAL ASSISTANT (use cases)
+     ========================================== -->
+<p class="slide-label">Slide 13 &mdash; The AI Personal Assistant</p>
+<div class="slide slide-usecases">
+  <div class="slide-eyebrow">Use Cases</div>
+  <h1>The AI Personal Assistant</h1>
+  <div class="subtitle">Knows how you like things done, remembers your work context, and connects to all your tools &mdash; so it can see the full picture and actually get things done</div>
+
+  <div class="usecase-section-label">Daily Workflow</div>
+  <div class="usecase-row row-workflow">
+    <div class="usecase-card">
+      <span class="uc-icon">&#128203;</span>
+      <div class="uc-title">To-Do Lists</div>
+      <div class="uc-desc">Builds and maintains to-do lists by scanning your inbox, calendar and slack. Send reminders to highlight what's urgent</div>
+    </div>
+    <div class="usecase-card">
+      <span class="uc-icon">&#128197;</span>
+      <div class="uc-title">Scheduling</div>
+      <div class="uc-desc">Looks across calendars for available time, suggest times and send calendar invites. Prep you for upcoming meetings</div>
+    </div>
+    <div class="usecase-card">
+      <span class="uc-icon">&#128236;</span>
+      <div class="uc-title">Inbox Triage</div>
+      <div class="uc-desc">Scan recent emails for anything outstanding. Draft messages in your tone with relevant context of what you're working on</div>
+    </div>
+    <div class="usecase-card">
+      <span class="uc-icon">&#128221;</span>
+      <div class="uc-title">Take Notes</div>
+      <div class="uc-desc">Take and/or synthesize notes. Saves the notes to build context over time and to easily reference in the future</div>
+    </div>
+  </div>
+
+  <div class="usecase-section-label">Data &amp; Research</div>
+  <div class="usecase-row row-research">
+    <div class="usecase-card">
+      <span class="uc-icon">&#128202;</span>
+      <div class="uc-title">Pull Data</div>
+      <div class="uc-desc">Query data from your Company's data source (ex. Airtable)</div>
+    </div>
+    <div class="usecase-card">
+      <span class="uc-icon">&#128270;</span>
+      <div class="uc-title">Research</div>
+      <div class="uc-desc">Search the web, synthesize sources and deliver a concise summary</div>
+    </div>
+    <div class="usecase-card">
+      <span class="uc-icon">&#127760;</span>
+      <div class="uc-title">Webscrape</div>
+      <div class="uc-desc">Compile information from websites using web scraping tools like Firecrawl</div>
+    </div>
+  </div>
+
+  <img class="recalc-logo" src="recalc-logo.png" alt="Recalc">
+</div>
+
+
+<!-- ==========================================
+     SLIDE 14: EXAMPLE — ADD FLIGHTS TO CALENDAR
+     ========================================== -->
+<p class="slide-label">Slide 14 &mdash; Example: Add Flights to Calendar</p>
+<div class="slide slide-example">
+  <div class="slide-eyebrow">Example Use Case</div>
+  <h1>Create Your Personal Agent</h1>
+
+  <div class="example-demo">
+    <div class="example-output">
+      <div class="example-thinking">Orchestrated six calendar events from email flights &rsaquo;</div>
+      <div class="example-result-label"><span class="done-check">&#10003;</span> Done! All 6 events added to your AI calendar</div>
+
+      <table class="example-table">
+        <thead>
+          <tr>
+            <th>Day</th>
+            <th>Event</th>
+            <th>Time (CT)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Mon Feb 2</strong></td>
+            <td><span class="emoji">&#128663;</span>Travel to AUS Airport</td>
+            <td>7:30&ndash;9:30am</td>
+          </tr>
+          <tr>
+            <td><strong>Mon Feb 2</strong></td>
+            <td><span class="emoji">&#9992;</span>Flight: AUS &rarr; DEN</td>
+            <td>10:00am&ndash;12:30pm</td>
+          </tr>
+          <tr>
+            <td><strong>Mon Feb 2</strong></td>
+            <td><span class="emoji">&#128663;</span>Travel from DEN Airport</td>
+            <td>12:30&ndash;2:00pm</td>
+          </tr>
+          <tr>
+            <td><strong>Thu Feb 5</strong></td>
+            <td><span class="emoji">&#128663;</span>Travel to DEN Airport</td>
+            <td>7:30&ndash;9:30am</td>
+          </tr>
+          <tr>
+            <td><strong>Thu Feb 5</strong></td>
+            <td><span class="emoji">&#9992;</span>Flight: DEN &rarr; AUS</td>
+            <td>10:00am&ndash;12:30pm</td>
+          </tr>
+          <tr>
+            <td><strong>Thu Feb 5</strong></td>
+            <td><span class="emoji">&#128663;</span>Travel from AUS Airport</td>
+            <td>12:30&ndash;2:00pm</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <img class="recalc-logo" src="recalc-logo.png" alt="Recalc">
+</div>
+
+
+<!-- ==========================================
+     SLIDE 15: EXAMPLE — CONNECT TO X FOR AI NEWS
+     ========================================== -->
+<p class="slide-label">Slide 15 &mdash; Example: Connect to X for AI News</p>
+<div class="slide slide-example-chat">
+  <div class="slide-eyebrow">Example Use Case</div>
+  <h1>Example: Connect Claude to X to stay on top of AI news</h1>
+
+  <div class="chat-demo">
+    <div class="chat-toolbar">
+      <div class="chat-tab active">Chat</div>
+      <div class="chat-tab">Code</div>
+      <div class="chat-path">&#128193; G:\My Drive\Recalc-Claude</div>
+    </div>
+
+    <div class="chat-messages">
+      <div class="chat-msg user">
+        <div class="chat-avatar human">K</div>
+        <div class="chat-bubble">
+          Find major AI releases from today
+        </div>
+      </div>
+
+      <div class="chat-msg">
+        <div class="chat-avatar ai">C</div>
+        <div class="chat-bubble">
+          I'll search for today's major AI releases using the RUBE tools. Let me first load the necessary tools.
+          <div class="action-item"><span class="tool-tag">WebSearch</span> major AI releases today</div>
+          <div class="action-item"><span class="tool-tag">X/Twitter</span> searching for AI announcements</div>
+        </div>
+      </div>
+
+      <div class="chat-msg user">
+        <div class="chat-avatar human">K</div>
+        <div class="chat-bubble">
+          ok i want to be able to have you look at X and highlight any (1) new AI product launches that are substantive [e.g. from the major companies], and (2) help me see recommendations on how to make the most of AI that seem to be genuinely useful (not hype posts). and i want to do this often. can we create a skill that would make this easier?
+        </div>
+      </div>
+
+      <div class="chat-msg">
+        <div class="chat-avatar ai">C</div>
+        <div class="chat-bubble">
+          Great idea. I'll create a reusable skill so you can just say <strong>"check AI news"</strong> and I'll scan X for substantive launches and practical recommendations &mdash; filtering out the hype.
+          <div class="action-item"><span class="tool-tag">Write</span> creating skill: ai-news-scan</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chat-input-bar">
+      <div class="chat-input-field">Ask Claude anything...</div>
+      <div class="chat-send-btn">Send</div>
+    </div>
+  </div>
+
+  <img class="recalc-logo" src="recalc-logo.png" alt="Recalc">
+</div>
+
+
+<!-- nav removed — use arrow keys or click/right-click to navigate -->
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  let current = 0;
+
+  function showSlide(i) {
+    slides.forEach(s => s.style.setProperty('display', 'none', 'important'));
+    current = Math.max(0, Math.min(i, slides.length - 1));
+    slides[current].style.setProperty('display', 'flex', 'important');
+    document.getElementById('counter').textContent = (current + 1) + ' / ' + slides.length;
+  }
+
+  function navigate(dir) { showSlide(current + dir); }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); navigate(1); }
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); navigate(-1); }
+    if (e.key === 'Home') { e.preventDefault(); showSlide(0); }
+    if (e.key === 'End') { e.preventDefault(); showSlide(slides.length - 1); }
+  });
+
+  // Click on slide to advance, right-click to go back
+  document.addEventListener('click', e => {
+    if (e.target.closest('.slide-nav')) return;
+    navigate(1);
+  });
+  document.addEventListener('contextmenu', e => {
+    if (e.target.closest('.slide-nav')) return;
+    e.preventDefault();
+    navigate(-1);
+  });
+
+  showSlide(0);
+</script>
+
+</body>
+</html>
