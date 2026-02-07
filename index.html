@@ -1372,6 +1372,156 @@
     font-family: var(--font);
   }
 
+
+  /* ============================================
+     MOBILE / SMALL SCREEN
+     ============================================ */
+  @media (max-width: 900px) {
+    :root { --slide-pad: 28px; }
+
+    body {
+      overflow: auto;
+      height: auto;
+      align-items: flex-start;
+    }
+
+    .slide {
+      width: 100vw !important;
+      height: auto !important;
+      min-height: 100vh;
+      min-height: 100dvh;
+      border-radius: 0;
+      box-shadow: none;
+      padding: var(--slide-pad);
+      padding-top: 36px;
+    }
+
+    /* Nav */
+    .slide-nav { bottom: 12px; }
+
+    /* Logo */
+    .recalc-logo {
+      position: relative;
+      bottom: auto; right: auto;
+      margin-top: 24px;
+      align-self: flex-end;
+      height: 22px;
+    }
+
+    /* Global font scaling */
+    .slide h1 { font-size: 28px !important; }
+    .slide-eyebrow { font-size: 10px; letter-spacing: 2px; }
+    .subtitle, .slide .subtitle { font-size: 14px !important; margin-bottom: 20px !important; }
+
+    /* COVER */
+    .slide-cover { padding: 48px 28px; }
+    .cover-content h1 { font-size: 32px !important; }
+    .cover-divider { width: 200px; }
+    .cover-content .cover-sub { font-size: 16px; }
+    .cover-corner-logo { bottom: 20px; left: 28px; }
+
+    /* RECALC (Who is Recalc) */
+    .recalc-body { flex-direction: column; gap: 24px; }
+    .recalc-values { width: 100%; }
+    .recalc-programs { grid-template-columns: 1fr; }
+    .slide-recalc .tagline { font-size: 16px; margin-bottom: 20px; }
+
+    /* AGENDA */
+    .slide-agenda { flex-direction: column; }
+    .agenda-left {
+      width: 100%; border-right: none;
+      border-bottom: 1px solid var(--gray-100);
+      padding: 28px;
+      padding-top: 36px;
+    }
+    .agenda-left h1 { font-size: 28px !important; }
+    .agenda-right { padding: 20px 28px; }
+    .agenda-item { padding: 14px 0; gap: 12px; }
+    .agenda-num { width: 32px; height: 32px; font-size: 14px; }
+    .agenda-text h3 { font-size: 16px; }
+    .agenda-text p { font-size: 12px; }
+
+    /* KEY PLAYERS */
+    .players-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .player-card { padding: 16px 14px; gap: 10px; }
+    .player-card .company-name { font-size: 20px; }
+    .player-card .feature-list li { font-size: 12px; }
+    .sentiment-bar { gap: 6px; }
+    .sentiment-text { font-size: 11px; }
+
+    /* OBJECTIVES / AI MOVING FAST */
+    .objectives-grid { grid-template-columns: 1fr; gap: 16px; }
+    .objective-card { padding: 24px 20px; }
+    .objective-card h3 { font-size: 18px; }
+    .objective-card p { font-size: 14px; }
+
+    /* COVERING (two-panel) */
+    .covering-panels { grid-template-columns: 1fr; gap: 16px; }
+    .cover-panel { padding: 24px 20px; }
+    .cover-panel h2 { font-size: 20px; }
+
+    /* FEATURE (side-by-side: Excel, PPT, Browsing) */
+    .slide-feature {
+      flex-direction: column;
+      padding: 0;
+    }
+    .feature-content {
+      width: 100%;
+      padding: 28px;
+      padding-top: 36px;
+    }
+    .feature-content h1 { font-size: 26px !important; margin-bottom: 16px; }
+    .feature-list li { font-size: 13px; }
+    .feature-visual {
+      width: 100%;
+      min-height: 200px;
+      padding: 16px;
+    }
+    .feature-visual img,
+    .feature-visual video {
+      width: 100% !important;
+    }
+
+    /* COMPARE (3-col grids) */
+    .compare-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
+    .compare-card { padding: 20px 18px; }
+    .compare-card-header { margin-bottom: 12px; }
+    .compare-card-header h3 { font-size: 16px; }
+    .compare-bullets li { font-size: 13px; }
+
+    /* PILLARS */
+    .pillars-grid { grid-template-columns: 1fr; gap: 12px; }
+    .pillar-card { padding: 20px 18px; }
+    .pillar-card h3 { font-size: 18px; margin-bottom: 12px; }
+
+    /* ASSISTANT (workflow cards) */
+    .workflow-row { flex-direction: column; gap: 12px; }
+    .wf-title { font-size: 13px; }
+    .wf-desc { font-size: 12px; }
+
+    /* USE CASES (grid) */
+    .usecase-row { flex-direction: column; gap: 12px; }
+    .usecase-card { padding: 16px 14px; }
+
+    /* DIVIDER */
+    .divider-content h1 { font-size: 28px !important; }
+    .divider-content p { font-size: 16px; }
+    .divider-boxes { flex-direction: column; width: 100%; gap: 12px; }
+    .divider-box { padding: 16px 20px; }
+
+    /* EXAMPLE */
+    .example-output { padding: 20px; }
+    .example-table th { font-size: 10px; padding: 8px 10px; }
+    .example-table td { font-size: 12px; padding: 10px; }
+
+    /* CHAT EXAMPLE */
+    .chat-messages { padding: 16px; }
+    .chat-bubble { font-size: 12px; padding: 10px 14px; }
+
+    /* COMPARE FOOTER */
+    .compare-footer { padding: 14px 18px; font-size: 13px; }
+  }
+
 </style>
 </head>
 <body>
